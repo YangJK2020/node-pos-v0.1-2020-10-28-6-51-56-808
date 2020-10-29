@@ -16,7 +16,6 @@ Input format (example):
         Name: 'Coca-Cola',
         Unit: 'bottle',
         Price: 3.00
-
     },
     {
         Barcode: 'ITEM000000',
@@ -60,6 +59,7 @@ Input format (example):
         Unit: 'a',
         Price: 2.00
     }
+
 ]
 
 ```
