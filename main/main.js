@@ -1,8 +1,7 @@
-module.export = function main() { 
-    function printReceipt(inputInfo){
-        let coca = {
+module.exports = function main(inputInfo) { 
+    let coca = {
         Barcode: 'ITEM000000',
-        Name: 'Coca-cola',
+        Name: 'Coca-Cola',
         Quantity: 0,
         Price: 3,
         Subtotal:0
@@ -21,100 +20,96 @@ module.export = function main() {
         Price: 2,
         Subtotal:0
         }
-    for (i in inputInfo)
+    for (let i = 0; i < inputInfo.length; i++)
     {
-        if (i.Name == 'Coca-Cola')
+        if (inputInfo[i].Name == 'Coca-Cola')
         {
-            this.coca.Quantity += 1;
+            coca.Quantity += 1;
         }
-        else if (i.Name == 'Sprite')
+        else if (inputInfo[i].Name == 'Sprite')
         {
-            this.sprite.Quantity += 1;
+            sprite.Quantity += 1;
         }
-        else (i.Name == 'Battery')
+        else if (inputInfo[i].Name == 'Battery')
         {
-            this.battery.Quantity += 1;
+            battery.Quantity += 1;
+        }
+        else
+        {
+            return "wrong input";
         }
     }
-    this.coca.Subtotal = this.coca.Price * this.coca.Quantity;
-    this.sprite.Subtotal = this.sprite.Price * this.sprite.Quantity;
-    this.battery.Subtotal = this.battery.Price * this.battery.Quantity;
-    let total = this.coca.Subtotal + this.sprite.Subtotal + this.battery.Subtotal;
+    coca.Subtotal = coca.Price * coca.Quantity;
+    sprite.Subtotal = sprite.Price * sprite.Quantity;
+    battery.Subtotal = battery.Price * battery.Quantity;
+    let total = coca.Subtotal + sprite.Subtotal + battery.Subtotal;
 
-    if (this.coca.Quantity == 0 && this.sprite.Quantity !== 0 && this.battery.Quantity !== 0)
+    if (coca.Quantity == 0 && sprite.Quantity !== 0 && battery.Quantity !== 0)
     {
         let output = '***<store earning no money>Receipt ***\n' +
-        'Name: Sprite, Quantity: ' + this.sprite.Quantity + ' bottles, Unit price: 3.00 (yuan), Subtotal: ' + this.sprite.Subtotal +'.00 (yuan)\n' +
-        'Name: Battery, Quantity: ' + this.battery.Quantity + ', Unit price: 2.00 (yuan), Subtotal: ' + this.battery.Subtotal +'.00 (yuan)\n' +
+        'Name: Sprite, Quantity: ' + sprite.Quantity + ' bottles, Unit price: 3.00 (yuan), Subtotal: ' + sprite.Subtotal +'.00 (yuan)\n' +
+        'Name: Battery, Quantity: ' + battery.Quantity + ', Unit price: 2.00 (yuan), Subtotal: ' + battery.Subtotal +'.00 (yuan)\n' +
         '----------------------\n' +
         'Total: ' + total + '.00 (yuan)\n' +
         '**********************\n';
-        console.log(output);
         return output;
     }
-    else if (this.coca.Quantity !== 0 && this.sprite.Quantity == 0 && this.battery.Quantity !== 0)
+    else if (coca.Quantity !== 0 && sprite.Quantity == 0 && battery.Quantity !== 0)
     {
         let output = '***<store earning no money>Receipt ***\n' +
-        'Name: Coca-Cola, Quantity: ' + this.coca.Quantity + ' bottles, Unit price: 3.00 (yuan), Subtotal: ' + this.coca.Subtotal +'.00 (yuan)\n' +
-        'Name: Battery, Quantity: ' + this.battery.Quantity + ', Unit price: 2.00 (yuan), Subtotal: ' + this.battery.Subtotal +'.00 (yuan)\n' +
+        'Name: Coca-Cola, Quantity: ' + coca.Quantity + ' bottles, Unit price: 3.00 (yuan), Subtotal: ' + coca.Subtotal +'.00 (yuan)\n' +
+        'Name: Battery, Quantity: ' + battery.Quantity + ', Unit price: 2.00 (yuan), Subtotal: ' + battery.Subtotal +'.00 (yuan)\n' +
         '----------------------\n' +
         'Total: ' + total + '.00 (yuan)\n' +
         '**********************\n';
-        console.log(output); 
         return output;
     }
-    else if (this.coca.Quantity !== 0 && this.sprite.Quantity !== 0 && this.battery.Quantity == 0)
+    else if (coca.Quantity !== 0 && sprite.Quantity !== 0 && battery.Quantity == 0)
     {
         let output = '***<store earning no money>Receipt ***\n' +
-        'Name: Coca-Cola, Quantity: ' + this.coca.Quantity + ' bottles, Unit price: 3.00 (yuan), Subtotal: ' + this.coca.Subtotal +'.00 (yuan)\n' +
-        'Name: Sprite, Quantity: ' + this.sprite.Quantity + ' bottles, Unit price: 3.00 (yuan), Subtotal: ' + this.sprite.Subtotal +'.00 (yuan)\n' +
+        'Name: Coca-Cola, Quantity: ' + coca.Quantity + ' bottles, Unit price: 3.00 (yuan), Subtotal: ' + coca.Subtotal +'.00 (yuan)\n' +
+        'Name: Sprite, Quantity: ' + sprite.Quantity + ' bottles, Unit price: 3.00 (yuan), Subtotal: ' + sprite.Subtotal +'.00 (yuan)\n' +
         '----------------------\n' +
         'Total: ' + total + '.00 (yuan)\n' +
         '**********************\n';
-        console.log(output);
         return output;  
     }
-    else if (this.coca.Quantity !== 0 && this.sprite.Quantity == 0 && this.battery.Quantity == 0)
+    else if (coca.Quantity !== 0 && sprite.Quantity == 0 && battery.Quantity == 0)
     {
         let output = '***<store earning no money>Receipt ***\n' +
-        'Name: Coca-Cola, Quantity: ' + this.coca.Quantity + ' bottles, Unit price: 3.00 (yuan), Subtotal: ' + this.coca.Subtotal +'.00 (yuan)\n' +
+        'Name: Coca-Cola, Quantity: ' + coca.Quantity + ' bottles, Unit price: 3.00 (yuan), Subtotal: ' + coca.Subtotal +'.00 (yuan)\n' +
         '----------------------\n' +
         'Total: ' + total + '.00 (yuan)\n' +
         '**********************\n';
-        console.log(output);
         return output;
     }
-    else if (this.coca.Quantity == 0 && this.sprite.Quantity !== 0 && this.battery.Quantity == 0)
+    else if (coca.Quantity == 0 && sprite.Quantity !== 0 && battery.Quantity == 0)
     {
         let output = '***<store earning no money>Receipt ***\n' +
-        'Name: Sprite, Quantity: ' + this.sprite.Quantity + ' bottles, Unit price: 3.00 (yuan), Subtotal: ' + this.sprite.Subtotal +'.00 (yuan)\n' +
+        'Name: Sprite, Quantity: ' + sprite.Quantity + ' bottles, Unit price: 3.00 (yuan), Subtotal: ' + sprite.Subtotal +'.00 (yuan)\n' +
         '----------------------\n' +
         'Total: ' + total + '.00 (yuan)\n' +
         '**********************\n';
-        console.log(output);
         return output;
     }
-    else if (this.coca.Quantity == 0 && this.sprite.Quantity == 0 && this.battery.Quantity !== 0)
+    else if (coca.Quantity == 0 && sprite.Quantity == 0 && battery.Quantity !== 0)
     {
         let output = '***<store earning no money>Receipt ***\n' +
-        'Name: Battery, Quantity: ' + this.battery.Quantity + ', Unit price: 2.00 (yuan), Subtotal: ' + this.battery.Subtotal +'.00 (yuan)\n' +
+        'Name: Battery, Quantity: ' + battery.Quantity + ', Unit price: 2.00 (yuan), Subtotal: ' + battery.Subtotal +'.00 (yuan)\n' +
         '----------------------\n' +
         'Total: ' + total + '.00 (yuan)\n' +
         '**********************\n';
-        console.log(output);
         return output;
     }
     else
     {
         let output = '***<store earning no money>Receipt ***\n' +
-        'Name: Coca-Cola, Quantity: ' + this.coca.Quantity + ' bottles, Unit price: 3.00 (yuan), Subtotal: ' + this.coca.Subtotal +'.00 (yuan)\n' +
-        'Name: Sprite, Quantity: ' + this.sprite.Quantity + ' bottles, Unit price: 3.00 (yuan), Subtotal: ' + this.sprite.Subtotal +'.00 (yuan)\n' +
-        'Name: Battery, Quantity: ' + this.battery.Quantity + ', Unit price: 2.00 (yuan), Subtotal: ' + this.battery.Subtotal +'.00 (yuan)\n' +
+        'Name: Coca-Cola, Quantity: ' + coca.Quantity + ' bottles, Unit price: 3.00 (yuan), Subtotal: ' + coca.Subtotal +'.00 (yuan)\n' +
+        'Name: Sprite, Quantity: ' + sprite.Quantity + ' bottles, Unit price: 3.00 (yuan), Subtotal: ' + sprite.Subtotal +'.00 (yuan)\n' +
+        'Name: Battery, Quantity: ' + battery.Quantity + ', Unit price: 2.00 (yuan), Subtotal: ' + battery.Subtotal +'.00 (yuan)\n' +
         '----------------------\n' +
         'Total: ' + total + '.00 (yuan)\n' +
         '**********************\n';
-        console.log(output);
         return output;
     }
-    }
-};
+}
